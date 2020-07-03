@@ -105,6 +105,7 @@ namespace ProjektProgramowanie
             OpenFileDialog dlg = new OpenFileDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
+                Console.WriteLine("Plik wczytany");
                 listBox1.Items.Clear();
                 listBox2.Items.Clear();
                 string[] lines = File.ReadAllLines(dlg.FileName);
@@ -114,6 +115,8 @@ namespace ProjektProgramowanie
                     listBox2.Items.Add(lines[i+1]);
                 }
             }
+            dlg.Dispose();
+            
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +124,7 @@ namespace ProjektProgramowanie
             SaveFileDialog dlg = new SaveFileDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
+                Console.WriteLine("Plik zapisany");
                 StreamWriter writer = new StreamWriter(dlg.FileName);
                 for (int i = 0; i < listBox1.Items.Count; i++)
                 {
@@ -130,6 +134,7 @@ namespace ProjektProgramowanie
                 writer.Close();
             }
             dlg.Dispose();
+            
         }
     }
 }
