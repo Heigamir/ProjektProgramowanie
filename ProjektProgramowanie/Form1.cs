@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,6 +98,38 @@ namespace ProjektProgramowanie
             {
                 button1_Click(this, new EventArgs());
             }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                string[] lines = File.ReadAllLines(dlg.FileName);
+                for(int i=0; i< lines.Length;i+=2)
+                {
+                    listBox1.Items.Add(lines[i]);
+                    listBox2.Items.Add(lines[i+1]);
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter writer = new StreamWriter(dlg.FileName);
+                for (int i = 0; i < listBox1.Items.Count; i++)
+                {
+                    writer.WriteLine((string)listBox1.Items[i]);
+                    writer.WriteLine((string)listBox2.Items[i]);
+                }
+                writer.Close();
+            }
+            dlg.Dispose();
         }
     }
 }
