@@ -22,20 +22,27 @@ namespace ProjektProgramowanie
         {
 
         }
-
+        /// <summary>
+        /// Dodaje obiekt do listy wraz z domyślnym stastusem do kupienia
+        /// </summary>
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Add(textBox1.Text);
             textBox1.Text = null;
             listBox2.Items.Add("Do kupienia");
         }
-
+        /// <summary>
+        /// Czyści obie listy
+        /// </summary>
         private void button3_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
         }
-
+        /// <summary>
+        /// Usuwanie elementów z obu listy
+        /// Należy pamiętać żeby usunąć element z listy wskazującej jako ostani inaczej listy przestaną się pokrywać
+        /// </summary>
         private void remove_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
@@ -54,7 +61,10 @@ namespace ProjektProgramowanie
             }
 
         }
-
+        /// <summary>
+        /// Zmianna statusu
+        /// Trzeba najpierw dodac nowy status a potem usunać stary!
+        /// </summary>
         private void change_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
@@ -91,7 +101,9 @@ namespace ProjektProgramowanie
             }
             
         }
-
+        /// <summary>
+        /// Dodaje obsługe "ENTER" z kjlawiatury aby przesłać text z pola do listy
+        /// </summary>
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -99,7 +111,9 @@ namespace ProjektProgramowanie
                 button1_Click(this, new EventArgs());
             }
         }
-
+        /// <summary>
+        /// Obsługa odczytu i iteracji po pliku do programu
+        /// </summary>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -118,7 +132,9 @@ namespace ProjektProgramowanie
             dlg.Dispose();
             
         }
-
+        /// <summary>
+        /// Obsługa zapisu i iteracji danych z programu do pliku
+        /// </summary>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
